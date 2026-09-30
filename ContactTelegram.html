@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vong LimHour | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        telegram: '#24A1DE',
+                        darkBg: '#0b0f19',
+                        cardBg: '#131b2e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism styling */
+        .glass-card {
+            background: rgba(19, 27, 46, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Gradient Glows */
+        .glow-bg {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+        .imgcontact {
+            display: flex;
+            width: 70px;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Background Ambient Glows -->
+    <div class="glow-bg w-96 h-96 bg-blue-600 top-0 -left-20"></div>
+    <div class="glow-bg w-96 h-96 bg-purple-600 top-1/3 -right-20"></div>
+    <div class="glow-bg w-96 h-96 bg-cyan-500 bottom-10 left-1/3"></div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-wider text-white flex items-center gap-2">
+                <span class="text-blue-500 font-black">
+                    <img src="https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/706078746_1478346050693050_1548351811733398574_n.jpg?stp=dst-jpg_tt6&cstp=mx1546x1536&ctp=s1546x1536&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF9e1YoA8hdJvjLeT0prxpSxXjAt2FmhknFeMC3YWaGSZzVAfGhseHXbf39ELW5_Zn4KHp6q8MAb2tfRBBRwItu&_nc_ohc=TYukwtIUhKwQ7kNvwH3Q0Dx&_nc_oc=AdrcAb4mjcdwtN8X9mx5sbW0zSsGhV-_SJbEJ_mWfbIw8pqYYYdwEZjaCqdZmct_yXs&_nc_zt=23&_nc_ht=scontent.fpnh10-1.fna&_nc_gid=0-mV-yJ4jobbzdd81DzPAw&_nc_ss=7b2a8&oh=00_AQPMP6QEHGfjEnSr8Ia7kOdh-kEcyBEwK3JteqkpGPNQmQ&oe=6AC15CE1" alt="" class="imgcontact"
+                </span> VONG LIMHOUR
+            </a>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Telegram CTA Header Button -->
+            <a href="https://t.me/VongLimHour" target="_blank" rel="noopener noreferrer" 
+               class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium px-4 py-2 rounded-xl transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-0.5">
+                <i class="fa-brands fa-telegram text-lg"></i>
+                <span>Telegram</span>
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-4 space-y-4">
+            <a href="#about" class="block text-gray-300 hover:text-blue-400 font-medium mobile-link">About</a>
+            <a href="#skills" class="block text-gray-300 hover:text-blue-400 font-medium mobile-link">Skills</a>
+            <a href="#contact" class="block text-gray-300 hover:text-blue-400 font-medium mobile-link">Contact</a>
+            <a href="https://t.me/VongLimHour" target="_blank" rel="noopener noreferrer" 
+               class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium px-4 py-2.5 rounded-xl">
+                <i class="fa-brands fa-telegram text-lg"></i>
+                <span>Connect on Telegram</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero / Profile Section -->
+    <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto w-full">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <!-- Left Text Box -->
+            <div class="flex-1 text-center md:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Available for Opportunities
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Hello, I'm <br/>
+                    <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
+                        Vong LimHour
+                    </span>
+                </h1>
+
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    Passionate tech enthusiast based in Cambodia. Dedicated to crafting digital experiences, pursuing innovation, and exploring creative possibilities.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                    <a href="#contact" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold px-6 py-3.5 rounded-2xl transition-all shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-1">
+                        <i class="fa-brands fa-telegram text-xl"></i>
+                        <span>Contact via Telegram</span>
+                    </a>
+                    <a href="#about" 
+                       class="inline-flex items-center gap-2 glass-card hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-2xl transition-all hover:-translate-y-1">
+                        <span>Learn More</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Profile Image Box -->
+            <div class="flex-1 flex justify-center w-full max-w-md">
+                <div class="relative group w-full max-w-xs sm:max-w-sm">
+                    <!-- Glow Behind Image -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                    
+                    <!-- Profile Card Outer -->
+                    <div class="relative glass-card p-3 rounded-3xl overflow-hidden">
+                        <div class="overflow-hidden rounded-2xl aspect-[4/5] relative">
+                            <img src="https://cdn.imageurlgenerator.com/uploads/3837263d-158d-4792-b5d5-a91d8ce65162.jpg" alt="Vong Limhour" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-700 ease-out"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x750/131b2e/ffffff?text=Vong+LimHour';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                            
+                            <div class="absolute bottom-4 left-4 right-4 text-left">
+                                <p class="text-xs text-blue-300 font-semibold uppercase tracking-wider">Cambodia</p>
+                                <h3 class="text-xl font-bold text-white">Vong LimHour</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto w-full">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+            <div class="max-w-3xl space-y-6">
+                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                    <span class="w-8 h-1 bg-blue-500 rounded-full inline-block"></span>
+                    About Me
+                </h2>
+                <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                    Welcome to my official digital space! My name is <strong class="text-white">Vong LimHour</strong>. I am enthusiastic about technology, continuous learning, and finding impactful ways to solve real-world problems.
+                </p>
+                <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                    Whether collaborating on projects, sharing knowledge, or building creative ideas from scratch, I always strive for excellence. Feel free to reach out to me anytime on Telegram to discuss potential collaborations or just to say hello!
+                </p>
+
+                <!-- Key Highlight Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 text-center sm:text-left">
+                        <i class="fa-solid fa-location-dot text-blue-400 text-xl mb-2"></i>
+                        <h4 class="text-white font-semibold text-sm">Location</h4>
+                        <p class="text-gray-400 text-xs mt-0.5">Phnom Penh, Cambodia</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 text-center sm:text-left">
+                        <i class="fa-solid fa-paper-plane text-cyan-400 text-xl mb-2"></i>
+                        <h4 class="text-white font-semibold text-sm">Direct Contact</h4>
+                        <p class="text-gray-400 text-xs mt-0.5">@VongLimHour</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 text-center sm:text-left col-span-2 sm:col-span-1">
+                        <i class="fa-solid fa-comments text-purple-400 text-xl mb-2"></i>
+                        <h4 class="text-white font-semibold text-sm">Communication</h4>
+                        <p class="text-gray-400 text-xs mt-0.5">English, Khmer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 max-w-4xl mx-auto w-full text-center">
+        <div class="glass-card rounded-3xl p-8 sm:p-14 border border-blue-500/20 relative overflow-hidden">
+            <div class="glow-bg w-64 h-64 bg-blue-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
+
+            <div class="relative z-10 space-y-6">
+                <div class="w-16 h-16 bg-blue-500/10 text-telegram rounded-2xl flex items-center justify-center mx-auto border border-blue-500/20 text-3xl">
+                    <i class="fa-brands fa-telegram"></i>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Connect Directly!</h2>
+                <p class="text-gray-300 max-w-lg mx-auto text-base">
+                    Have a project in mind or want to chat? You can quickly reach me on Telegram anytime.
+                </p>
+
+                <!-- Telegram Direct Card Link -->
+                <div class="pt-4 flex justify-center">
+                    <a href="https://t.me/LimhourVong" target="_blank" rel="noopener noreferrer"
+                       class="group relative inline-flex items-center gap-4 bg-gradient-to-r from-telegram to-blue-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-1">
+                        <i class="fa-brands fa-telegram text-2xl group-hover:scale-110 transition-transform"></i>
+                        <span>@VongLimHour on Telegram</span>
+                        <i class="fa-solid fa-arrow-right text-sm opacity-70 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-nav py-8 px-6 text-center text-gray-500 text-sm mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Vong LimHour. All rights reserved.</p>
+            <div class="flex items-center space-x-6 text-gray-400">
+                <a href="https://t.me/VongLimHour" target="_blank" rel="noopener noreferrer" class="hover:text-telegram transition-colors">
+                    <i class="fa-brands fa-telegram text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
